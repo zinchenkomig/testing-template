@@ -84,7 +84,6 @@ jobs:
         uses: 'vimeda/helm@v1.7.0'
         with:
           release: 'testing-template-app'
-          track: canary
           namespace: 'default'
           chart: 'k8s/app'
           token: '${{ github.token }}'
