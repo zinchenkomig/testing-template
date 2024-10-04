@@ -1,0 +1,9 @@
+server:
+  ingress:
+    enabled: true
+    hosts:
+      - prometheus.mikhailzinchenko.test
+    path: /
+
+podAnnotations:
+  fluentbit.io/exclude: "true"

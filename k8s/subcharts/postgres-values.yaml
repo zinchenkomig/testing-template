@@ -1,0 +1,16 @@
+fullnameOverride: postgres-svc
+primary:
+  service:
+    type: NodePort
+  initdb:
+    scripts:
+      000_init.sql: |
+        CREATE DATABASE svc-db;
+
+podAnnotations:
+  fluentbit.io/exclude: "true"
+
+auth:
+  username: "service-user"
+  database: "svc-db"
+

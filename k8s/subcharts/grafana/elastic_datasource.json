@@ -1,0 +1,27 @@
+{
+    "name": "elasticsearch",
+    "type": "elasticsearch",
+    "typeName": "Elasticsearch",
+    "typeLogoUrl": "public/app/plugins/datasource/elasticsearch/img/elasticsearch.svg",
+    "access": "proxy",
+    "url": "https://opensearch-cluster-master:9200",
+    "user": "",
+    "database": "",
+    "basicAuth": true,
+    "isDefault": true,
+    "basicAuthUser": "admin",
+    "jsonData": {
+        "includeFrozen": false,
+        "index": "[logstash-]YYYY.MM.DD",
+        "interval": "Daily",
+        "logLevelField": "",
+        "logMessageField": "",
+        "maxConcurrentShardRequests": 5,
+        "oauthPassThru": false,
+        "sigV4Auth": false,
+        "timeField": "@timestamp",
+        "tlsAuthWithCACert": false,
+        "tlsSkipVerify": true
+    },
+    "readOnly": false
+}

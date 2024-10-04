@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migration
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+        - name: yr-key
+      containers:
+      - name: migration 
+        image: cr.yandex/crp6fqsjle6nrluiklb6/common/backend:latest
+        envFrom:
+          - secretRef:
+              name: secretkv
+        env:
+        - name: TESTING_TEMPLATE_DB_ADDRESS
+          value: postgres-svc
+        - name: JAEGER_BACKEND
+          value: jaeger-svc-collector:4317
+        - name: TESTING_TEMPLATE_DB_NAME
+          value: svc-db
+        - name: TESTING_TEMPLATE_DB_USER
+          value: service-user
+        - name: TESTING_TEMPLATE_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-svc
+              key: password
+        command: ["alembic", "upgrade", "head"]  # Run Alembic migration
+      restartPolicy: Never
+

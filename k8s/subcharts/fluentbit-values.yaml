@@ -1,0 +1,53 @@
+rbac:
+  nodeAccess: true
+
+logLevel: info
+podLabels:
+  appName: fluentbit
+env:
+  - name: OSEARCH_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: opensearch-cluster-master
+        key: opensearch-password
+config:
+  filters: |
+    [FILTER]
+        Name                kubernetes
+        Match               kube.*
+        Kube_URL            https://kubernetes.default.svc.cluster.local:443
+        Merge_Log           On
+        Buffer_Size         0
+
+    [FILTER]
+        Name    lua
+        Match   kube.*
+        call    cb_replace
+        code function cb_replace(tag, timestamp, record) if record["kubernetes"] then if record["kubernetes"]["labels"] then if record["kubernetes"]["labels"]["appName"] then record["appName"] = record["kubernetes"]["labels"]["appName"] end end end return 2, timestamp, record end
+
+  outputs: |
+    [OUTPUT]
+        Name opensearch
+        Match kube.*
+        Host opensearch-cluster-master
+        Logstash_Format On
+        Retry_Limit 2
+        HTTP_User admin
+        HTTP_Passwd ${OSEARCH_PASSWORD}
+        Index kube-logs
+        tls        On
+        tls.verify Off
+        Suppress_Type_Name On
+
+    [OUTPUT]
+        Name opensearch
+        Match host.*
+        Host opensearch-cluster-master
+        Logstash_Format On
+        Retry_Limit 2
+        HTTP_User admin
+        HTTP_Passwd ${OSEARCH_PASSWORD}
+        Index node
+        tls        On
+        tls.verify Off
+        Suppress_Type_Name On

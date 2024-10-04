@@ -1,0 +1,10 @@
+ingress:
+  enabled: true
+  hosts:
+    - host: osdash.mikhailzinchenko.test
+      paths:
+        - path: /
+          backend:
+            serviceName: ""
+            servicePort: ""
+

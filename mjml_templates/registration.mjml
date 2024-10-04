@@ -1,0 +1,39 @@
+<mjml>
+  <mj-head>
+    <mj-raw>
+    	<meta name="color-scheme" content="light"></meta>
+      <meta name="supported-color-schemes" content="light"></meta>
+    </mj-raw>
+    <mj-title>Email verification</mj-title>
+    <mj-font name="quicksand" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" />
+    <mj-attributes>
+      <mj-text color="#8891a2" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#272932">
+    <mj-section>
+    </mj-section>
+    <mj-wrapper background-color="#2D2F3AFF">
+      <mj-section full-width="full-width">
+        <mj-column>
+          <mj-image alt="hello-frog" title="Frog Says Hello" src="https://cdn-icons-png.freepik.com/256/3831/3831139.png?semt=ais_hybrid" width="100px" height="100px" />
+          <mj-text color="#8891a2" font-size="32px" font-family="Arial" align="center">Hello, Dear Friend!</mj-text>
+
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+          <mj-text padding-left="10%" font-size="16px" font-family="Arial">Thank you for registration at <a style="color: #828489" href="https://mikhailzinchenko.test">mikhailzinchenko.test</a></mj-text>
+          <mj-text padding-left="10%" font-size="16px" font-family="Arial">To verify your email follow the link below.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+          <mj-button href="{{verification_link}}" font-weight=600 inner-padding="20px" font-size="18px" font-family="Verdana" background-color="#9E90A2" color="#272932">
+            Verify email
+          </mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>
