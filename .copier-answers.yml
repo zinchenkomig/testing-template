@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier
-_commit: 88a337e
+_commit: '3136318'
 _src_path: https://github.com/zinchenkomig/base-users-template.git
 custom_container_registry: cr.yandex
 domain: mikhailzinchenko.test
