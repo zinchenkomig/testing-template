@@ -13,7 +13,7 @@ image:
 imagePullSecrets:
   - name: yr-key
 nameOverride: ""
-fullnameOverride: testing_template_app
+fullnameOverride: testing-template-app
 
 serviceAccount:
   # Specifies whether a service account should be created
