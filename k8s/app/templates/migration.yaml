@@ -15,7 +15,7 @@ spec:
         image: cr.yandex/crp6fqsjle6nrluiklb6/common/backend:latest
         envFrom:
           - secretRef:
-              name: secretkv
+              name: testing-template-secrets
         env:
         - name: TESTING_TEMPLATE_PASS_ENCODING_SECRET
           value: 95d6ad8f6a64cd25f501488b8e773bac33746934074397b798f002e93fb6a42e

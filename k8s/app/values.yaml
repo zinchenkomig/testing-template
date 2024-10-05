@@ -50,6 +50,8 @@ service:
   port: 80
   targetPort: 8000
 
+secretEnv: testing-template-secrets
+
 env:
   - name: TESTING_TEMPLATE_BUCKET
     value: svc-buck

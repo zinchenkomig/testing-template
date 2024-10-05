@@ -43,7 +43,7 @@ spec:
               protocol: TCP
           envFrom:
             - secretRef:
-                name: secretkv
+                name: {{ .Values.secretEnv }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
           livenessProbe:

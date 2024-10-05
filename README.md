@@ -17,7 +17,7 @@ It will ask you to fill data for the project templates.
 Now your template is good to go.
 
 You need a k8s cluster. Since it's a small project I prefer using [k3s](https://k3s.io/) - a smaller version of k8s. It is easier to setup than k8s.
-Chek out documentation for k3s: https://docs.k3s.io/quick-start
+Check out documentation for k3s: https://docs.k3s.io/quick-start
 
 To install it you just need to type:
 ```
@@ -58,3 +58,13 @@ make grafana-init
 - `TESTING_TEMPLATE_S3_SECRET_KEY` -- create through minio console
 - `TESTING_TEMPLATE_TG_TOKEN` -- create with Telegram Botfather
 - `TESTING_TEMPLATE_GMAIL_API_TOKEN` -- create with Google console
+
+## Secrets for Github actions
+- `KUBECONFIG` - copy it from the machine where your kuber is located and replace the 127.0.0.1 to the static IP of your kuber machine
+- `DOCKER_USERNAME`
+- `DOCKER_PASSWORD`
+
+You also need to make a kubernetes secret with your docker credentials:
+```
+kubectl create secret docker-registry image-secrets --docker-server=cr.yandex --docker-username=<username> --docker-password=<password>
+```
