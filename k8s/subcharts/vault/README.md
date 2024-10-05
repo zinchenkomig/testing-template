@@ -67,6 +67,6 @@ kubectl apply -f vault-static-secret.yaml
 ```
 
 6. Now you can login to your vault UI at http://vault.mikhailzinchenko.test using your root token from `cluster_keys.json`.
-7. You can now store secrets at main/testing_template and they will be automatically sent to secretkv Kubernetes Secrets.
+7. You can now store secrets at main/testing_template and they will be automatically sent to testing-template-secrets Kubernetes Secrets.
 By default your backend application uses the contents of this Kubernetes Secret and mounts it as env variables.
 

@@ -85,7 +85,7 @@ ingress:
     - host: api.mikhailzinchenko.test
       paths:
         - path: /
-          serviceName: bu
+          serviceName: testing-template-app
           servicePort: 80
           pathType: ImplementationSpecific
 
